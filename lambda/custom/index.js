@@ -282,13 +282,21 @@ const WhatCanIBuyHandler = {
     return ms.getInSkillProducts(locale).then(function fetchPurchasableProducts(result) {
       const purchasableProducts = result.inSkillProducts.filter(record => record.entitled === 'NOT_ENTITLED' && record.purchasable === 'PURCHASABLE');
 
+      if (purchasableProducts && purchasableProducts.length > 0) {
+        return handlerInput.responseBuilder
+          .speak(`現在購入できる商品は、${getSpeakableListOfProducts(purchasableProducts)}です。` +
+            '詳しく知りたい場合には、歴史パックについて教えて、のように言ってみてください。' +
+            'また購入する場合には、宇宙パックを購入、のように言ってください。どうしますか？')
+          .reprompt('どうしますか？')
+          .getResponse();
+      }
+      
+      console.log('No item to buy');
       return handlerInput.responseBuilder
-        .speak(`現在購入できる商品は、${getSpeakableListOfProducts(purchasableProducts)}です。` +
-          '詳しく知りたい場合には、歴史パックについて教えて、のように言ってみてください。' +
-          'また購入する場合には、宇宙パックを購入、のように言ってください。どうしますか？')
+        .speak('現在購入できる商品はありません。引き続きトリビアを聞きますか？')
         .reprompt('どうしますか？')
         .getResponse();
-    });
+    });  
   },
 };
 
