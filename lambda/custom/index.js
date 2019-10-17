@@ -291,7 +291,7 @@ const WhatCanIBuyHandler = {
           .getResponse();
       }
       
-      console.log('No item to buy');
+      console.log('No purchasable product');
       return handlerInput.responseBuilder
         .speak('現在購入できる商品はありません。引き続きトリビアを聞きますか？')
         .reprompt('どうしますか？')
