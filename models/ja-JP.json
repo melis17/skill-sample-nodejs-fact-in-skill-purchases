@@ -89,7 +89,9 @@
             "{productCategory} パックを購入",
             "{productCategory} パックが欲しい",
             "{productCategory} パックを申し込む",
-            "{productCategory} パックに課金する"
+            "{productCategory} パックに課金する",
+            "{productCategory} を買う",
+            "{productCategory} を購入"
           ]
         },
         {
